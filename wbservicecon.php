@@ -108,58 +108,65 @@
     //            'error' => 4, 'msg' => 'Unrecognized User')));
     //    }
 
-
-    /***
-     * Construcción de query
-     ***/
-    if (empty($_REQUEST['fields']) || is_null($_REQUEST['fields'])){
-        $fields = '*';
-    }
-    else{
-        $fields = implode($_REQUEST['fields'], ', ');
-    }
-
-
-    $query = 'SELECT '. $fields .' FROM '.$_REQUEST['model']. ' WHERE ';
-
-    if(empty($_REQUEST['filter']) || is_null($_REQUEST['filter'])){
-        $query .= '1';
-    }
-    else{
-        $bfilter = Array();
-        foreach ($_REQUEST['filter'] as $filter){
-            $bfilter[] = $filter[0].' '.$filter[1].' "'.$filter[2].'" ';
+    if(!empty($_REQUEST['method']) && !is_null($_REQUEST['method'])){
+        /***
+         * Construcción de query
+         ***/
+        if (empty($_REQUEST['fields']) || is_null($_REQUEST['fields'])){
+            $fields = '*';
         }
-        $query .= implode($bfilter, 'AND ');
+        else{
+            $fields = implode($_REQUEST['fields'], ', ');
+        }
+
+
+        $query = 'SELECT '. $fields .' FROM '.$_REQUEST['model']. ' WHERE ';
+
+        if(empty($_REQUEST['filter']) || is_null($_REQUEST['filter'])){
+            $query .= '1';
+        }
+        else{
+            $bfilter = Array();
+            foreach ($_REQUEST['filter'] as $filter){
+                $bfilter[] = $filter[0].' '.$filter[1].' "'.$filter[2].'" ';
+            }
+            $query .= implode($bfilter, 'AND ');
+        }
+
+        if(!empty($_REQUEST['limit']) && !is_null($_REQUEST['limit'])){
+            $query .= ' LIMIT '.$_REQUEST['limit'];
+        }
+
+        // echo $query; 
+        // echo "\n";
+        // die;
+
+        // $array_result['results']['query'] = $query;
+        $array_result = Array(
+            'version' => VERSION,
+            'format' => 'json',
+            'result' => '',
+        );
+
+        $res = $db->query($query);
+        if(!$res){
+            die('Error');
+        }
+
+        $i = 0;
+        $array_result['result'] = Array();
+        while ($obj = $res->fetch_object()){
+            $array_result['result'][] = (array)$obj;
+        }
+
+        echo json_encode($array_result);
+
+        $db->close();
     }
+    else{
+        error_log('metodo no valido');
+        die(
+            json_encode(Array('version' => VERSION,
+            'error' => 5, 'msg' => 'metodo no valido')));
 
-    if(!empty($_REQUEST['limit']) && !is_null($_REQUEST['limit'])){
-        $query .= ' LIMIT '.$_REQUEST['limit'];
     }
-
-    // echo $query; 
-    // echo "\n";
-    // die;
-
-    // $array_result['results']['query'] = $query;
-    $array_result = Array(
-        'version' => VERSION,
-        'format' => 'json',
-        'result' => '',
-    );
-
-    $res = $db->query($query);
-    if(!$res){
-        die('Error');
-    }
-
-    $i = 0;
-    $array_result['result'] = Array();
-    while ($obj = $res->fetch_object()){
-        $array_result['result'][] = (array)$obj;
-    }
-
-    echo json_encode($array_result);
-
-    $db->close();
-
