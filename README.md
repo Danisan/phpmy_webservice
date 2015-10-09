@@ -1,6 +1,3 @@
-[![Build Status](https://travis-ci.org/Danisan/phpmy_webservice.svg)](https://travis-ci.org/Danisan/phpmy_webservice)
-[![Coverage Status](https://coveralls.io/repos/Danisan/phpmy_webservice/badge.svg?branch=8.0&service=github)](https://coveralls.io/github/Danisan/phpmy_webservice?branch=master)
-[![Code Climate](https://codeclimate.com/github/Danisan/phpmy_webservice/badges/gpa.svg)](https://codeclimate.com/github/Danisan/phpmy_webservice)
 
 
 # phpmy_webservice
