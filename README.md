@@ -1,3 +1,8 @@
+[![Build Status](https://travis-ci.org/Danisan/phpmy_webservice.svg)](https://travis-ci.org/Danisan/phpmy_webservice)
+[![Coverage Status](https://coveralls.io/repos/Danisan/phpmy_webservice/badge.svg?branch=8.0&service=github)](https://coveralls.io/github/Danisan/phpmy_webservice?branch=master)
+[![Code Climate](https://codeclimate.com/github/Danisan/phpmy_webservice/badges/gpa.svg)](https://codeclimate.com/github/Danisan/phpmy_webservice)
+
+
 # phpmy_webservice
 
 Generic Webservice for PHP-MySQL Database
@@ -13,10 +18,14 @@ https://www.gnu.org/licenses/lgpl.txt
 ## Instructions
 
 -Rename authentication.php.sample to authentication.php
+
 -Edit this file including your authentication data
+
 -Copy both files to a web accesible address.
+
 -user_test and user_hash provided in example are intented
  for testing purposes.
+
 -uncomment from line 78 to 97 to allow only authorized 
  users, making the modification you need.
 
@@ -57,11 +66,15 @@ https://www.gnu.org/licenses/lgpl.txt
 ## Instrucciones
 
 -Renombre authentication.php.sample a authentication.php
+
 -Edite este archivo incluyendo en el mismo sus datos de 
  autenticación para su base de datos.
+
 -Copie ambos archivos a una dirección accesible desde web.
+
 -user_test y user_hash provistos en el ejemplo, son utlizables 
  para test.
+
 -descomente desde linea 78 a 97 para permitir acceso a sus usuarios
  de sistema, realizando las modificaciones que necesite.
 
@@ -86,3 +99,11 @@ Request de ejemplo:
    'limit' => 10,
 ]
 
+## Credits
+<p>
+<img alt="Logo BMYA" src="http://crm.blancomartin.cl/index.php?entryPoint=image&name=c82ab43f-e8dd-b2fa-25ff-56017f69d116" />
+</p>
+
+Blanco Martín & Asociados - BMyA S.A.
+
+http://www.blancomartin.com.ar
