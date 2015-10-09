@@ -1,0 +1,10 @@
+<?php
+	/**
+	 * Autenticación
+	 * Para mantener las variables de autenticación
+	 * Fuera del código principal
+	 **/
+	$servidor = 'localhost';
+	$usuario = 'user';
+	$password = 'password';
+	$basedatos = 'database';
